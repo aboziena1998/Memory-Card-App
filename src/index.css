@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap");
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1;
+}
+svg,
+img {
+  max-width: 100%;
+  display: block;
+}
+body {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #f9f54b;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-height: 80dvh;
+}
+/* Form  */
+form {
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 1rem;
+}
+form h2 {
+  text-align: left;
+}
+form button {
+  align-self: center;
+  background: hsl(231, 100%, 61%);
+  color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  /* gap: 0.4rem; */
+
+  padding: 0.9rem 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+}
+
+form button:hover {
+  background: hsl(231, 100%, 66%);
+}
+
+textarea {
+  resize: none;
+  background: #3f979b;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 0.4rem;
+  padding: 0.6rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  border: none;
+  outline: none;
+  width: 400px;
+}
+textarea:focus {
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.7);
+}
+/* Cards Slider */
+.card-slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2rem;
+  perspective: 1000px;
+  overflow: hidden;
+}
+.cards-container {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+}
+.card {
+  aspect-ratio: 9/6;
+  min-inline-size: 100px;
+  inline-size: 400px;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4);
+  padding: 1rem 1.2rem;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.865, 0.3, 0.44, 1);
+  word-break: break-all;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+}
+
+:is(.card-face, .card-back) {
+  backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 3rem;
+}
+
+.card-back {
+  transform: rotateY(0.5turn);
+  background: #aee2ff;
+  color: rgba(26, 12, 12);
+}
+.card-face {
+  justify-content: center;
+  background: #205e61;
+  color: white;
+}
+.cards-container.flip {
+  transition: transform 0.5s ease-in-out;
+  transform: rotateY(0.5turn);
+}
+
+:is(.card.next, .card.previous) {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+.card.next {
+  transform: translateX(100%);
+}
+.card.previous {
+  transform: translateX(-100%);
+}
+.card.current {
+  opacity: 1;
+  visibility: visible;
+  position: initial;
+}
+.card .delete-btn {
+  position: absolute;
+  color: rgb(255, 234, 6);
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  padding: 0.2rem;
+  top: 5%;
+  right: 5%;
+  inline-size: 40px;
+  block-size: 40px;
+  cursor: pointer;
+}
+.card .instructions {
+  position: absolute;
+  inset: 50%px;
+  font-size: 5rem;
+  color: hsla(0, 0%, 0%, 0.082);
+  pointer-events: none;
+  display: block;
+}
+
+.card-slider p {
+  padding-inline-start: 1.5rem;
+  font-weight: 500;
+  font-size: minmax(0.5rem, 1rem);
+}
+
+.arrow-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.arrow-btn {
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: inline-block;
+  flex-basis: 25%;
+  cursor: pointer;
+}
+.arrow-btn:is(:focus, :active) {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+.arrow-btn:active {
+  outline: none;
+}
+.arrow-btn svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* delete All Button */
+.delete-all-btn {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  background: rgb(55, 54, 114);
+  color: #fafafa;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.delete-all-btn:hover {
+  background: hsl(241, 36%, 25%);
+}
